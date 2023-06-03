@@ -1,28 +1,14 @@
-# Create T3 App
+![macbookair-mockup-cropped-assignment-app](https://github.com/HynekS/assignment-app/assets/24924967/9e4930ee-2cba-47c7-afbb-fa3c0f61c478)
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+# My assignment application
 
-## What's next? How do I make an app with this?
+Notes
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+* Based on create-t3-app.
+* Wile I tried to stick to the AntD component system as much as possible; I haven't worked with it ever before, and I struggled a little. So I relied on Tailwindcss to get the job done. Hope you don't mind.
+* I didn't have time to implement the external DB, so I fell back on mocking the "favorites" feature with localStorage.
+* I haven't had the opportunity to test on Safari; I hope it's not broken beyond recognition.
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+Generally fun to build, and I also might have accidentally learned some Chinese.
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
-
-## Learn More
-
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
-
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
-
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
-
-## How do I deploy this?
-
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+Hynek
