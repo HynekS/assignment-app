@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { Chart, Util } from "@antv/g2";
 
-import { RouterOutputs } from "~/utils/api";
+import type { RouterOutputs } from "~/utils/api";
 import { COLORS as colors } from "~/constants/colors";
 
 type Data = RouterOutputs["covid"]["getCovidData"]["cumulative"];
@@ -54,7 +54,7 @@ const ChartTwo = ({ data }: { data: Data }) => {
             shadowColor: "rgba(0, 0, 0, .45)",
           },
           content: (obj) => {
-            return obj.type + "\n" + obj.value.toLocaleString();
+            return String(obj.type) + "\n" + String(obj.value).toLocaleString();
           },
         };
       });

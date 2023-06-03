@@ -25,14 +25,14 @@ export const covidRouter = createTRPCRouter({
       Scotland: number;
     };
 
-    let byNations = validated.body.reduce(
+    const byNations = validated.body.reduce(
       (acc: ByNations[], curr: (typeof validated.body)[number]) => {
-        let existingEntry = acc.find((entry) => entry.date === curr.date);
+        const existingEntry = acc.find((entry) => entry.date === curr.date);
 
         if (existingEntry) {
           existingEntry[curr.areaName] = curr.newCasesByPublishDate;
         } else {
-          let newEntry = {
+          const newEntry = {
             date: curr.date,
             [curr.areaName]: curr.newCasesByPublishDate,
           };
@@ -49,7 +49,7 @@ export const covidRouter = createTRPCRouter({
       "England" | "Northern Ireland" | "Scotland" | "Wales"
     >;
 
-    let cumulativeAsObject = byNations.reduce(
+    const cumulativeAsObject = byNations.reduce(
       (acc: Cumulative, curr) => {
         acc.England += curr.England || 0;
         acc["Northern Ireland"] += curr["Northern Ireland"] || 0;
@@ -68,7 +68,7 @@ export const covidRouter = createTRPCRouter({
     const getEntries = <T extends object>(obj: T) =>
       Object.entries(obj) as Entries<T>;
 
-    let cumulative = getEntries(cumulativeAsObject).map(([type, value]) => ({
+    const cumulative = getEntries(cumulativeAsObject).map(([type, value]) => ({
       type,
       value,
     }));

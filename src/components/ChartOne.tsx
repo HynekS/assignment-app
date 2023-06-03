@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { Chart } from "@antv/g2";
 
-import { RouterOutputs } from "~/utils/api";
+import type { RouterOutputs } from "~/utils/api";
 import { COLORS as colors } from "~/constants/colors";
 
 type Data = RouterOutputs["covid"]["getCovidData"]["byNations"];

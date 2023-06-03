@@ -11,7 +11,7 @@ const FavouriteToggle = ({ chartId }: Props) => {
 
   useEffect(() => {
     setIsFavourite(localStorage.getItem(chartId) === "true" ? true : false);
-  }, []);
+  }, [chartId]);
 
   const toggleFavourite = () => {
     if (!globalThis.localStorage) return false;
@@ -22,7 +22,9 @@ const FavouriteToggle = ({ chartId }: Props) => {
   return (
     <button onClick={toggleFavourite}>
       <HeartIcon
-        className={`h-5 w-5 ${isFavourite && `fill-red-500 stroke-red-500`}`}
+        className={`h-5 w-5 ${
+          isFavourite ? `fill-red-500 stroke-red-500` : ""
+        }`}
       />
     </button>
   );
