@@ -26,11 +26,15 @@ const ChartCard = ({ title = "Missing title", id, children }: Props) => {
       headStyle={{
         background: "linear-gradient(to right, #0f0c29, #302b63, #24243e)",
       }}
+      style={{
+        borderRadius: "0.75em",
+      }}
+      bordered={false}
       className="width-full lg:w-1/2"
     >
       {children}
       <Card.Meta
-        className="flex items-center border-t p-4"
+        className="flex items-center border-t border-indigo-500/75 p-4"
         avatar={<Avatar src="https://i.pravatar.cc/100" />}
         description={[
           <div

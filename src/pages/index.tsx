@@ -34,51 +34,70 @@ const Home: NextPage = () => {
         <Layout
           className="h-full pt-4"
           style={{
-            background: "linear-gradient(to right, #0f0c29, #302b63, #24243e)",
+            backgroundImage:
+              "linear-gradient(to right, #0f0c29, #302b63, #24243e)",
           }}
         >
-          <Layout.Header className="flex items-center justify-between bg-transparent">
-            <h1 className="text-xl font-bold">My neat little demo</h1>
-            <Space>
-              <Button className="flex items-center justify-between gap-2 px-4 py-2 font-medium">
-                Export to PDF
-                <ArrowDownTrayIcon className="h-5 w-5" />
-              </Button>
-              <Button className="flex items-center justify-between gap-2 px-4 py-2 font-medium">
-                Notes<span className="opacity-75">(3)</span>
-                <Bars3BottomLeftIcon className="h-5 w-5" />
-              </Button>
-              <Button className="flex items-center justify-between gap-2 px-4 py-2 font-medium">
-                Filter
-                <div className="h-5 w-5 rounded-full bg-indigo-400 p-1 text-[0.75rem] leading-none text-white">
-                  9+
-                </div>
-                <FunnelIcon className="h-5 w-5" />
-              </Button>
-            </Space>
+          <Layout.Header
+            className="flex items-center justify-between bg-transparent pb-3 pt-1 shadow-[5px_5px_5px_rgba(15,12,41,0.35)]"
+            style={{ height: "unset" }}
+          >
+            <h2 className="py-0 text-lg font-semibold leading-none opacity-75">
+              App title
+            </h2>
           </Layout.Header>
-          <Layout.Content>
-            <div className="m-8 flex flex-col gap-8 lg:mx-12 lg:my-16 lg:flex-row">
-              <ChartCard title="New cases" id="chartOne">
-                {isLoading && (
-                  <div className="relative flex h-[564px] items-center justify-center">
-                    <Spin tip="Loading" className="my-auto" />
+          <Layout
+            className="mx-12 pt-3"
+            style={{
+              background: "unset",
+            }}
+          >
+            <Layout.Header
+              className="flex items-center justify-between bg-transparent"
+              style={{ padding: "unset" }}
+            >
+              <h1 className="text-xl font-bold">Page title</h1>
+              <Space>
+                <Button className="flex items-center justify-between gap-2 px-4 py-2 font-medium">
+                  Export to PDF
+                  <ArrowDownTrayIcon className="h-5 w-5" />
+                </Button>
+                <Button className="flex items-center justify-between gap-2 px-4 py-2 font-medium">
+                  Notes<span className="opacity-75">(3)</span>
+                  <Bars3BottomLeftIcon className="h-5 w-5" />
+                </Button>
+                <Button className="flex items-center justify-between gap-2 px-4 py-2 font-medium">
+                  Filter
+                  <div className="h-5 w-5 rounded-full bg-indigo-500 p-1 text-[0.75rem] leading-none text-white">
+                    9+
                   </div>
-                )}
-                {data && <ChartOne data={data.byNations} />}
-                {error && "Oooopsie! Something went wrong :("}
-              </ChartCard>
-              <ChartCard title="Cases by nation" id="chartTwo">
-                {isLoading && (
-                  <div className="relative flex h-[564px] items-center justify-center">
-                    <Spin tip="Loading" className="my-auto" />
-                  </div>
-                )}
-                {data && <ChartTwo data={data.cumulative} />}
-                {error && "Oooopsie! Something went wrong :("}
-              </ChartCard>
-            </div>
-          </Layout.Content>
+                  <FunnelIcon className="h-5 w-5" />
+                </Button>
+              </Space>
+            </Layout.Header>
+            <Layout.Content>
+              <div className="my-8 flex flex-col gap-8 lg:mx-12 lg:my-16 lg:flex-row">
+                <ChartCard title="New cases" id="chartOne">
+                  {isLoading && (
+                    <div className="relative flex h-[564px] items-center justify-center">
+                      <Spin tip="Loading" className="my-auto" />
+                    </div>
+                  )}
+                  {data && <ChartOne data={data.byNations} />}
+                  {error && "Oooopsie! Something went wrong :("}
+                </ChartCard>
+                <ChartCard title="Cases by nation (cumulative)" id="chartTwo">
+                  {isLoading && (
+                    <div className="relative flex h-[564px] items-center justify-center">
+                      <Spin tip="Loading" className="my-auto" />
+                    </div>
+                  )}
+                  {data && <ChartTwo data={data.cumulative} />}
+                  {error && "Oooopsie! Something went wrong :("}
+                </ChartCard>
+              </div>
+            </Layout.Content>
+          </Layout>
         </Layout>
       </ConfigProvider>
     </>
