@@ -1,6 +1,6 @@
 import { type NextPage } from "next";
 import Head from "next/head";
-import { Layout, Space, Button, ConfigProvider } from "antd";
+import { Layout, Space, Button, ConfigProvider, Spin } from "antd";
 import {
   Bars3BottomLeftIcon,
   ArrowDownTrayIcon,
@@ -9,6 +9,8 @@ import {
 
 import { api } from "~/utils/api";
 import ChartCard from "~/components/ChartCard";
+import ChartOne from "~/components/ChartOne";
+import ChartTwo from "~/components/ChartTwo";
 
 const Home: NextPage = () => {
   const { data, isLoading, error } = api.covid.getCovidData.useQuery();
@@ -55,10 +57,26 @@ const Home: NextPage = () => {
             </Space>
           </Layout.Header>
           <Layout.Content>
-            <Space wrap>
-              <ChartCard />
-              <ChartCard />
-            </Space>
+            <div className="m-8 flex flex-col gap-8 md:m-16 md:flex-row">
+              <ChartCard title="New cases">
+                {isLoading && (
+                  <Spin tip="Loading">
+                    <div className="content" />
+                  </Spin>
+                )}
+                {data && <ChartOne data={data} />}
+                {error && "Oooopsie! Something went wrong :("}
+              </ChartCard>
+              <ChartCard title="Cases by nation">
+                {isLoading && (
+                  <Spin tip="Loading">
+                    <div className="content" />
+                  </Spin>
+                )}
+                {data && <ChartTwo />}
+                {error && "Oooopsie! Something went wrong :("}
+              </ChartCard>
+            </div>
           </Layout.Content>
         </Layout>
       </ConfigProvider>
