@@ -1,19 +1,20 @@
 import { Card, Avatar } from "antd";
 import { ChatBubbleBottomCenterTextIcon } from "@heroicons/react/24/outline";
-import { HeartIcon } from "@heroicons/react/24/outline";
+import FavouriteToggle from "./FavouriteToggle";
 
 interface Props {
   title: string;
+  id: "chartOne" | "chartTwo";
   children: React.ReactNode;
 }
 
-const ChartCard = ({ title = "Missing title", children }: Props) => {
+const ChartCard = ({ title = "Missing title", id, children }: Props) => {
   return (
     <Card
       title={
         <div className="flex items-center justify-between">
           <h2>{title}</h2>
-          <HeartIcon className="h-5 w-5" />
+          <FavouriteToggle chartId={id} />
         </div>
       }
       hoverable

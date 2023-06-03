@@ -59,7 +59,7 @@ const Home: NextPage = () => {
           </Layout.Header>
           <Layout.Content>
             <div className="m-8 flex flex-col gap-8 lg:mx-12 lg:my-16 lg:flex-row">
-              <ChartCard title="New cases">
+              <ChartCard title="New cases" id="chartOne">
                 {isLoading && (
                   <div className="relative flex h-[564px] items-center justify-center">
                     <Spin tip="Loading" className="my-auto" />
@@ -68,7 +68,7 @@ const Home: NextPage = () => {
                 {data && <ChartOne data={data.byNations} />}
                 {error && "Oooopsie! Something went wrong :("}
               </ChartCard>
-              <ChartCard title="Cases by nation">
+              <ChartCard title="Cases by nation" id="chartTwo">
                 {isLoading && (
                   <div className="relative flex h-[564px] items-center justify-center">
                     <Spin tip="Loading" className="my-auto" />
