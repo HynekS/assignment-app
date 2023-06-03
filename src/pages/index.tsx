@@ -25,31 +25,32 @@ const Home: NextPage = () => {
       <ConfigProvider
         theme={{
           token: {
-            // Tailwind emerald-700
-            colorPrimary: "#047857",
+            colorPrimary: "white",
+            colorText: "#c7d2fe",
+            colorBorder: "#c7d2fe",
           },
         }}
       >
-        <Layout className="h-full">
-          {/*}
-        {isLoading && "Loading data from tRPC…"}
-        {error && "Oooopsie! Something went wrong :("}
-        {data && <pre>{JSON.stringify(data, null, 2)}</pre>}
-        */}
+        <Layout
+          className="h-full pt-4"
+          style={{
+            background: "linear-gradient(to right, #0f0c29, #302b63, #24243e)",
+          }}
+        >
           <Layout.Header className="flex items-center justify-between bg-transparent">
-            <h1 className="text-lg font-semibold">Page title</h1>
+            <h1 className="text-xl font-bold">My neat little demo</h1>
             <Space>
               <Button className="flex items-center justify-between gap-2 px-4 py-2 font-medium">
                 Export to PDF
                 <ArrowDownTrayIcon className="h-5 w-5" />
               </Button>
               <Button className="flex items-center justify-between gap-2 px-4 py-2 font-medium">
-                Notes<span className="text-gray-400">(3)</span>
+                Notes<span className="opacity-75">(3)</span>
                 <Bars3BottomLeftIcon className="h-5 w-5" />
               </Button>
               <Button className="flex items-center justify-between gap-2 px-4 py-2 font-medium">
                 Filter
-                <div className="h-5 w-5 rounded-full bg-emerald-700 p-1 text-[0.75rem] leading-none text-white">
+                <div className="h-5 w-5 rounded-full bg-indigo-400 p-1 text-[0.75rem] leading-none text-white">
                   9+
                 </div>
                 <FunnelIcon className="h-5 w-5" />
@@ -57,23 +58,23 @@ const Home: NextPage = () => {
             </Space>
           </Layout.Header>
           <Layout.Content>
-            <div className="m-8 flex flex-col gap-8 md:m-16 md:flex-row">
+            <div className="m-8 flex flex-col gap-8 lg:mx-12 lg:my-16 lg:flex-row">
               <ChartCard title="New cases">
                 {isLoading && (
-                  <Spin tip="Loading">
-                    <div className="content" />
-                  </Spin>
+                  <div className="relative flex h-[564px] items-center justify-center">
+                    <Spin tip="Loading" className="my-auto" />
+                  </div>
                 )}
-                {data && <ChartOne data={data} />}
+                {data && <ChartOne data={data.byNations} />}
                 {error && "Oooopsie! Something went wrong :("}
               </ChartCard>
               <ChartCard title="Cases by nation">
                 {isLoading && (
-                  <Spin tip="Loading">
-                    <div className="content" />
-                  </Spin>
+                  <div className="relative flex h-[564px] items-center justify-center">
+                    <Spin tip="Loading" className="my-auto" />
+                  </div>
                 )}
-                {data && <ChartTwo />}
+                {data && <ChartTwo data={data.cumulative} />}
                 {error && "Oooopsie! Something went wrong :("}
               </ChartCard>
             </div>

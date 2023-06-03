@@ -1,11 +1,12 @@
 import { useEffect, useRef } from "react";
 import { Chart } from "@antv/g2";
 
-import { api, RouterOutputs } from "~/utils/api";
+import { RouterOutputs } from "~/utils/api";
+import { COLORS as colors } from "~/constants/colors";
 
-//let chart: Chart | null = null;
+type Data = RouterOutputs["covid"]["getCovidData"]["byNations"];
 
-const ChartOne = ({ data }) => {
+const ChartOne = ({ data }: { data: Data }) => {
   const chartRef = useRef<Chart | null>(null);
 
   useEffect(() => {
@@ -47,41 +48,44 @@ const ChartOne = ({ data }) => {
           name: "England",
           value: "England",
           marker: {
-            symbol: "line",
-            style: { stroke: "#1890ff", lineWidth: 2 },
+            symbol: "square",
+            style: { fill: colors.England },
           },
         },
         {
           name: "Northern Ireland",
           value: "Northern Ireland",
           marker: {
-            symbol: "line",
-            style: { stroke: "#2fc25b", lineWidth: 2 },
+            symbol: "square",
+            style: { fill: colors["Northern Ireland"] },
           },
         },
         {
           name: "Scotland",
           value: "Scotland",
           marker: {
-            symbol: "line",
-            style: { stroke: "#9f925b", lineWidth: 2 },
+            symbol: "square",
+            style: { fill: colors.Scotland },
           },
         },
         {
           name: "Wales",
           value: "Wales",
           marker: {
-            symbol: "line",
-            style: { stroke: "red", lineWidth: 2 },
+            symbol: "square",
+            style: { fill: colors.Wales },
           },
         },
       ],
     });
 
-    chartRef.current.line().position("date*England").color("#1890ff");
-    chartRef.current.line().position("date*Wales").color("#2fc25b");
-    chartRef.current.line().position("date*Scotland").color("#9f925b");
-    chartRef.current.line().position("date*Northern Ireland").color("red");
+    chartRef.current.line().position("date*England").color(colors.England);
+    chartRef.current.line().position("date*Scotland").color(colors.Scotland);
+    chartRef.current
+      .line()
+      .position("date*Northern Ireland")
+      .color(colors["Northern Ireland"]);
+    chartRef.current.line().position("date*Wales").color(colors.Wales);
 
     chartRef.current.removeInteraction("legend-filter");
     chartRef.current.render();
