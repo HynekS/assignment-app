@@ -5,3 +5,8 @@
 html, body , #__next {
   height: 100%;
 }
+
+body {
+  background-image: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+  background-size: 100% 100%;
+}

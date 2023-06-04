@@ -34,12 +34,11 @@ const Home: NextPage = () => {
         <Layout
           className="h-full pt-4"
           style={{
-            backgroundImage:
-              "linear-gradient(to right, #0f0c29, #302b63, #24243e)",
+            background: "unset",
           }}
         >
           <Layout.Header
-            className="flex items-center justify-between bg-transparent pb-3 pt-1 shadow-[5px_5px_5px_rgba(15,12,41,0.35)]"
+            className="mx-0 flex items-center justify-between bg-transparent px-4 pb-3 pt-1 shadow-[5px_5px_5px_rgba(15,12,41,0.35)] md:px-12"
             style={{ height: "unset" }}
           >
             <h2 className="py-0 text-lg font-semibold leading-none opacity-75">
@@ -47,17 +46,17 @@ const Home: NextPage = () => {
             </h2>
           </Layout.Header>
           <Layout
-            className="mx-12 pt-3"
+            className="mx-4 pt-3 md:mx-12"
             style={{
               background: "unset",
             }}
           >
             <Layout.Header
-              className="flex items-center justify-between bg-transparent"
+              className="mb-8 flex flex-wrap items-center justify-between gap-4 bg-transparent md:mb-auto"
               style={{ padding: "unset" }}
             >
               <h1 className="text-xl font-bold">Page title</h1>
-              <Space>
+              <Space style={{ flexWrap: "wrap" }}>
                 <Button className="flex items-center justify-between gap-2 px-4 py-2 font-medium">
                   Export to PDF
                   <ArrowDownTrayIcon className="h-5 w-5" />
